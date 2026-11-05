@@ -44,6 +44,19 @@ footer{text-align:center;color:var(--muted);padding:20px}
 .answer-good{color:#147a4b;font-weight:bold}.answer-warn{color:#a15c00;font-weight:bold}
 .web-output{background:#f3f9ff;border:1px dashed #8dbbd8;border-radius:10px;padding:14px;min-height:54px;white-space:pre-wrap}
 
+
+.student-print-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.student-print-grid label{display:flex;flex-direction:column;gap:5px;font-weight:600}
+.student-field{width:100%;padding:9px;border:1px solid var(--line);border-radius:7px;font:inherit;background:white;color:#123}
+@media print{
+ .student-print-panel{display:block!important;border:1px solid #555!important;padding:12px!important;margin-bottom:12px!important}
+ .student-print-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .student-field{border:0;border-bottom:1px solid #333;border-radius:0;padding:4px 2px;background:transparent;color:#000;min-height:25px}
+ .student-print-grid label{font-size:10pt}
+ .student-print-panel h2{font-size:14pt;margin:0 0 8px}
+}
+@media(max-width:600px){.student-print-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -63,6 +76,17 @@ footer{text-align:center;color:var(--muted);padding:20px}
  <button data-tab="teacher">Teacher Guide</button>
 </nav>
 <main>
+
+<div class="panel student-print-panel">
+ <h2>Student Information</h2>
+ <div class="student-print-grid">
+  <label>Student Name <input class="student-field" type="text" placeholder="Enter full name"></label>
+  <label>Grade & Section <input class="student-field" type="text" placeholder="Grade 7 - Section"></label>
+  <label>Date <input class="student-field" type="date"></label>
+  <label>Teacher <input class="student-field" type="text" placeholder="Teacher's name"></label>
+ </div>
+ <p class="small no-print">Complete these details before printing. Your information will appear on the printed lesson activities and worksheets.</p>
+</div>
 <section id="overview" class="tab">
  <div class="panel">
   <span class="pill">BOW Week 6 • Second Term</span>
